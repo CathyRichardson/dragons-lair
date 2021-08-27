@@ -17,7 +17,7 @@ const register = async (req, res) => {
             id: user.id,
             username: user.username
         }
-        res.status(201).send(user);
+        res.status(201).send(req.session.user);
     }
 }
 
