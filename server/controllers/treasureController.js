@@ -3,6 +3,13 @@ const dragonTreasure = async (req, res) => {
     return res.status(200).send(result);
 }
 
+const getUserTreasure = async (req, res) => {
+    const { id } = req.session.user;
+    const result = await req.app.get('db').get_user_treasure(id);
+    return res.status(200).send(result);
+}
+
 module.exports = {
-    dragonTreasure
+    dragonTreasure,
+    getUserTreasure
 }
