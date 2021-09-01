@@ -58,6 +58,11 @@ export default class Header extends Component {
 
   logout() {
     // axios GET to /auth/logout here
+    axios.get('/auth/logout')
+      .then(() => { //We don't need use of the response, since it is just the string 'OK' because we used the 'sendStatus' method on the backend.
+        this.props.updateUser({});
+      })
+      .catch( err => console.log(err));
   }
 
   render() {

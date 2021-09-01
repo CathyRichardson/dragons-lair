@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 require('dotenv').config();
-const { register, login } = require('./controllers/authController')
+const { register, login, logout } = require('./controllers/authController')
 
 const { SESSION_SECRET, CONNECTION_STRING } = process.env;
 const PORT = 4000;
@@ -28,6 +28,7 @@ massive({
 
 app.post('/auth/register', register);
 app.post('/auth/login', login);
+app.get('/auth/logout', logout);
 
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));

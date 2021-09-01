@@ -43,7 +43,13 @@ const login = async (req, res) => {
     }
 }
 
+const logout = async (req, res) => {
+    req.session.destroy(); // This destroys the data stored on the user's session object, effectively logging the user out.
+    res.sendStatus(200);
+}
+
 module.exports = {
     register,
-    login
+    login,
+    logout
 }
