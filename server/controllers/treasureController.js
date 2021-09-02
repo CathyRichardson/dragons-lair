@@ -16,8 +16,14 @@ const addUserTreasure = async (req, res) => {
     return res.status(200).send(result);
 }
 
+const getAllTreasure = async (req, res) => {
+    const result = await req.app.get('db').get_all_treasure();
+    return res.status(200).send(result);
+}
+
 module.exports = {
     dragonTreasure,
     getUserTreasure,
-    addUserTreasure
+    addUserTreasure,
+    getAllTreasure
 }
