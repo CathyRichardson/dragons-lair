@@ -34,6 +34,16 @@ export default class Container extends Component {
 
   getAllTreasure() {
     // axios GET to /api/treasure/all here
+    axios.get('/api/treasure/all')
+      .then(({ data }) => {
+        this.setState({
+          treasures: {
+            ...this.state.treasures,
+            all: data
+          }
+        })
+      })
+      .catch(err => alert(err.response.request.response)); //referencing .response.request.response on the error object allows us to drill down to the string response that we sent on the server.
   }
 
   getMyTreasure() {
@@ -47,7 +57,7 @@ export default class Container extends Component {
           },
         });
       })
-      .catch(err => err.response.request.response)
+      .catch(err => err.response.request.response);
   }
 
   addMyTreasure(newMyTreasure) {
