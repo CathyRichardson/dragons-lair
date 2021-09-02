@@ -29,7 +29,7 @@ export default class Container extends Component {
           },
         });
       })
-      .catch(err => console.log(err));
+      .catch(err => alert(err.response.request.response));
   }
 
   getAllTreasure() {
@@ -57,7 +57,7 @@ export default class Container extends Component {
           },
         });
       })
-      .catch(err => err.response.request.response);
+      .catch(err => alert(err.response.request.response));
   }
 
   addMyTreasure(newMyTreasure) {

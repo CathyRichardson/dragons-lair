@@ -44,6 +44,7 @@ app.post('/auth/register', register);
 app.post('/auth/login', login);
 app.get('/auth/logout', logout);
 
+//treasure endpoints
 app.get('/api/treasure/dragon', dragonTreasure);
 app.get('/api/treasure/user', usersOnly, getUserTreasure);
 app.post('/api/treasure/user', usersOnly, addUserTreasure);
