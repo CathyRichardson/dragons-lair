@@ -3,7 +3,7 @@ const session = require('express-session');
 const massive = require('massive');
 require('dotenv').config();
 const { register, login, logout } = require('./controllers/authController');
-const { dragonTreasure, getUserTreasure } = require('./controllers/treasureController');
+const { dragonTreasure, getUserTreasure, addUserTreasure } = require('./controllers/treasureController');
 const { usersOnly } = require('./middleware/authMiddleware');
 
 const { SESSION_SECRET, CONNECTION_STRING } = process.env;
@@ -34,5 +34,6 @@ app.get('/auth/logout', logout);
 
 app.get('/api/treasure/dragon', dragonTreasure);
 app.get('/api/treasure/user', usersOnly, getUserTreasure);
+app.post('/api/treasure/user', usersOnly, addUserTreasure);
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
